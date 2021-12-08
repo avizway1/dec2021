@@ -1,0 +1,106 @@
+ENable MFA : Multi Factor Authentication : 
+
+https://aws.amazon.com/console
+aws.com
+
+email id : 
+password : 
+MFA Code : 
+	--> Virtual MFA : applications : Google authenticator, ms authenticator, authy2..
+	--> hardware MFA : Physical device : 
+	--> U2F (yuby key) : you need this device on the laptop you want to login.
+
+Root user : Account owner that performs tasks requiring unrestricted access. (1 user)
+IAM user : User within an account that performs daily tasks. (5000 IAM Users)
+
+
+3 Members working on AWS project : 
+--> Sharing root user name and pwd..!!!!!
+
+IAM : identity and access management : We can create users and groups, we can limit the users access to respective job roles / daily activites.
+
+--> Storage admin : s3 : IAM User with only s3 permissions : Username, pwd & Sign-in
+--> Compute admin : ec2 : IAM User with only ec2 permissions : Username, pwd & Sign-in 
+--> TL : Admin Access : IAM User with only Admin permissions : Username, pwd & Sign-in
+
+Create an IAM : 
+--> Choose Username : s3admin : 
+
+Select AWS access type : 
+--> AWS Management console : GUI : Un, pwd, Sign-in : Browser
+--> Programatic Access : CLI : Accesskeyid and secretaccesskey : CDK/SDK, AWS cli, 3rd party applications 
+
+Associate/allocate permissions : 
+
+--> Create a Group, allocate permission at group level, add this user to group.
+--> COpy permissions from an existing user.
+--> Attach existing permissions directly.  : AmazonS3FullAccess
+
+Policy : Document that contains set of Permissions 
+
+
+--> Add Tags, Next Review screen and login 
+
+
+_________________________________________________________________________________
+
+D: 
+
+Policy : DOcument contains set of permissions on AWS environment. Writtens in JSON format. 
+--> AWS Managed (Based on Services)
+--> AWS Managed - Job function
+--> Customer Managed : 
+
+Service : For what service we are creating policy.! : S3
+Action : Allow / Deny : All
+Resources : All Resources.
+
+Requirement : I need an IAM user, THis IAM user need to have "administrator access" on my aws environment, but not on S3 Service. 
+
+Implcit allow : 
+--> Whatever the service policy you associate to the user, He will get only that particular service access. Remaining all services he cannot access. 
+
+--> Explicit Deny : Deny the service access based on requirement. Deny will take effect. 
+Explicit deny will always have highest privilages. 
+
+Credentials Report : 
+arn : Amazon Resource Name : arn:aws:iam::501170964283:user/Avinash_T
+
+How to track an IAM user activity..!! 
+CLoudtrail is logging service in our aws environment. Enabled by default. It stores last 90 days activities/logs. Create a Trail to enable logs for unlimited days.
+
+Management & Governance --> Cloudtrail --> Event History.
+
+____
+
+Task : Create an IAM user with "AdministratorAccess" and login as this user. Verify that, are you able to change the "support plan", Are you able to access the "billing console"..???
+
+Task 2 : How to provide "billing access" to IAM users..??
+
+Task 3 : Create an IAM user, Add "Admin policy" and create a Deny S3 policy and associate. Login as IAM user you created and test his access on S3..?? 
+Use policy simulator to test his access on s3.
+
+Task 4 : Create a "Customer Manager Policy" to activate MFA For an IAM user.
+
+Create an IAM user, Associate "S3 Full access", Login as this iam user.. along with S3.. He should get permissions to ACtivate/deactivate MFA device.
+
+______________________________________________________________________________________
+
+D: 
+
+Inline Policy : Applies to only one resource. We cannot reuse this policy. 
+
+Permissions Boundary : Set a permissions boundary to control the maximum permissions this user can have.
+
+___
+
+Least privilages mechanism : Allocate permissions to perform the required job/activity only.
+
+
+
+
+
+
+
+
+
