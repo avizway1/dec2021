@@ -1,0 +1,69 @@
+S3 : Simple Storage Service : 
+-
+Object based storage :  We cannot install/run any applications/os. : Dropbox / GDrive 
+--> Designed to flat files.
+
+Block based storage : Designed to run OS, We can install/run applications.. : EBS, Instance store volumes. : EC2 
+Storage over the network : Storage runs over the network and it can be mounted to multiple devices. : EFS, FSx : EC2
+
+--> Designed to store objects. We can store any flat files.
+--> We store data in BUCKETS. 
+--> Bucket names should be unique across the globe. 
+--> Defualtly, we can create 100 buckets, This is a soft limit. 
+--> We can store unlimited data in a bucket.
+--> No Pre-provisioning required.
+--> Bucket naming limitations
+	--> Min char 3, Max 63 char length
+	--> Bucket name should be in small , and numeric
+	--> Bucket name should not start with .
+	--> Should not end with . , No adjesent ..
+	--> Bucket name should not resemble IP address format. (192.168.100.1)
+
+--> We can upload objects to this buckets.
+--> Min obj size : 0 bytes.. Max Obj size: 5 TB
+--> S3 is a global service. Doesn't required region selection.
+--> While creating we need to choose the region. Data physically resides at this regions AZs. 
+
+https://s3.ap-south-1.amazonaws.com/bucketname/objectname
+https://bucketname.s3.ap-south-1.amazonaws.com/objectname (virtual path)
+https://bucketname.s3.amazonaws.com/objectname (virtual path)
+
+Virtual paths won't work if we have . in bucket names.
+
+To make an object public : 
+
+Block Public Access settings for this account : Account Level Blocking
+Block public access (bucket settings) : Bucket level Blocking
+--> We should make an object public, then only Object URLs works.
+Object Ownership : ACLs enabled
+
+S3 Free Tier ELigibility : 
+5 GB Standard Storage
+--> 2000 PUT (Upload) / 20,000 GET (Download)
+
+_______________________________________________________________________________
+
+Versioning
+CRR / SRR
+LCR
+Encryption
+Bucket policy
+
+object lock
+bucket statc website
+monitoring
+rtc
+logging
+IT con
+
+
+
+
+
+
+
+
+
+
+
+
