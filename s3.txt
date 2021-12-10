@@ -43,7 +43,27 @@ S3 Free Tier ELigibility :
 
 _______________________________________________________________________________
 
-Versioning
+
+GDrive : 100 gb plan				S3	: no pre provisioning req
+
+20 gb Daily					S3-Standard
+20 gb Infreq 					Standard-IA / OneZOne-IA
+10 gb don't know when to access			Intelligent Tier
+20 gb unimp data / non critical			RRS (Redused redundancy storage)
+10 gb archive					Glacier / Glacier-DA
+
+30gb
+
+99.99% Ava
+99.999999999 % Durability
+
+
+Versioning : 
+
+
+
+
+
 CRR / SRR
 LCR
 Encryption
@@ -57,6 +77,70 @@ logging
 IT con
 
 
+S3 Storage Classes : 
+
+--> S3 Standard : Defualt storage class for all the data we upload to s3. Data will be available immedeatly.
+Designed to store : Frequently accessed data. 
+Availability : 99.99%,  Durability: 99.999999999 (11 9's) 
+Data replicates across : >= 3 AZs
+
+--> Standard-IA : Data will be available immedeatly. Designed to store : infrequently accessed data
+Avai : 99.9%, Durability : 99.999999999 (11 9's) 
+Data replicates across : >= 3 AZs
+
+--> One Zone-IA : Data will be available immedeatly. Designed to store : infrequently accessed data. Store only non-critical data
+Avai : 99.5 %, Durability : 99.999999999 (11 9's) 
+Data replicates across : 1 AZs
+
+--> Glacier Flexible Retrieval (Formerly Glacier) : Long-term data archiving with retrieval times ranging from minutes to hours. Data won't be available immedeatly. We need to initiate a data restration to view the data. Restoration takes (1 min - 5 Hrs)
+Avai : 99.99 %, Durability : 99.999999999 (11 9's) 
+Data replicates across : >= 3 AZs
+
+--> Glacier Instant Retrieval : Long-lived archive data accessed once a quarter with instant retrieval in milliseconds. 
+
+--> Glacier Deep Archieve : Long-term data archiving with retrieval times ranging from 12 hrs. Data won't be available immedeatly. We need to initiate a data restration to view the data. Restoration takes (5 - 12 Hrs)
+Avai : 99.99 %, Durability : 99.999999999 (11 9's) 
+Data replicates across : >= 3 AZs
+..
+S3 Intelligent Tier : If we have unknown access pattern, we can choose. 
+Avai : 99.9 %, Durability : 99.999999999 (11 9's) 
+Data replicates across : >= 3 AZs
+
+RRS : Redused Redundancy Storage : Not Recommanded : Less durability.. 
+Durability : 99.99%, As we have less durability we have high chances to loss the data when compared to another storage classes.
+
+
+S3 Pricing : 
+--> How much data we are storing.
+--> How many GET/PUT operations (uploads/downloaded object count)
+--> Data retrivals
+
+Glacier data retrival : 
+Bulk retrieval : Typically within 5-12 hours.
+Standard retrieval : Typically within 3-5 hours.
+Expedited retrieval : Typically within 1-5 minutes when retrieving less than 250 MB.
+
+_________
+
+Version : AWS maintains multiple copies in s3 bucket. 
+--> Defaultly versioning will be in Disabled state. Once enabled, We cannot disable (Suspend/enable)
+--> When versioning is enabled, If we delete an object
+
+Versioning : HIDE
+--> S3 will show most recent uploaded object only.
+--> We will get a Delete Marker. 
+--> TO get object back / undo delete, Set Version to SHOW, "Delete the delete marker".
+
+Versioning : SHOW
+--> If we delete an object, it deletes permanently.
+
+
+
+Life Cycle Management Rule : 
+
+S3 Standard --> StandardIA --> Glacier --> Delete
+S3 Standard --> Glacier --> Delete
+S3 Standard --> Delete
 
 
 
