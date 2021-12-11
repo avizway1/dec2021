@@ -134,7 +134,9 @@ Versioning : HIDE
 Versioning : SHOW
 --> If we delete an object, it deletes permanently.
 
+______________________________________________________________________________________
 
+D: 11/12/2021
 
 Life Cycle Management Rule : 
 
@@ -143,7 +145,35 @@ S3 Standard --> Glacier --> Delete
 S3 Standard --> Delete
 
 
+CRR / SRR : 
+--> Source bucket and destination bucket must be enabled with versioning. 
+--> Existing objects will not replicate to the destination bucket.
+--> All future / subsequent uploads will replicate to destination bucket. 
 
+RTC : Replication time control : Data replicates to destination bucket with in 15 Min. (99.99% of the data) : COST US
+
+___
+Data transfer from One region to another region cost us.
+Data transfer within a region won't cost us anything.
+_________
+
+
+Server access logging : enable logging on bucket.
+
+Cloudtrail : Data events : It allow us to log all s3 activities (Current buckets and future buckets).
+
+________
+
+Billing alarm configurtion : 
+
+--> Billing dashboard --> Billing preferences --> Enable "Receive Free Tier Usage Alerts"
+--> Billing dashboard --> Billing preferences --> Enable "Receive Billing Alerts"
+
+
+Task : Confiure Life CYcle management rule to Delete all the current objects after 7 days of creation. COnfiure previous version objects to delete after 2 days (When it become non current).
+
+Task 2 : Create source and destination buckets in same region, COnfigure to replicate the objects. 
+(Work with only S3 STANDARD Storage Class).
 
 
 
