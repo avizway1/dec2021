@@ -338,12 +338,7 @@ In S3, Perfix place imp role. /prefix we will get 3500 put & 5500 get operations
 
 Req: 35,000 PUT.. --> Create 10 folders and upload data simumtaniously. 
 
-__________
 
-Consistancy Mechanism : 
-
-Read after write Consistency for PUT of new objects. (If we upload any object, it will be available immedeatly without any delay)
-Eventual Consistency overwrite of Put objects and Delete objects. (If any object is overwritten/deleted, at same time if any request is generated slight chances are there to get the deleted data/outdated data)
 
 __________________
 
@@ -355,3 +350,108 @@ https://www.msp360.com/explorer/windows/amazon-s3.aspx
 
 Task : Try any of the s3 supported 3rd party application. 
 Task : Try to deliver simple static webpage with s3.
+
+___________________________________________________________________________________
+
+D: 17/12/2021
+
+Consistancy Mechanism : 
+
+Read after write Consistency for PUT of new objects. (If we upload any object, it will be available immedeatly without any delay)
+Eventual Consistency overwrite of Put objects and Delete objects. (If any object is overwritten/deleted, at same time if any request is generated slight chances are there to get the deleted data/outdated data)
+
+___
+
+
+AWS Snow Family: 
+AWS SnowCone : 8 TB
+AWS SNowball Edge : 40-100 TB 
+AWS SnowMobile : PB Scale container
+
+1 PB, 1 gbps ... 20-23 Yrs to upload  : 3 Months migrate
+
+
+_____
+
+EC2 : Elastic Compute Cloud : Servers
+
+Server/box : VM (Virtual machine) : Azure VM : Compute Engine : EC2 Instance
+
+Application : Server : 10 Customers : small server   100 C : Medium.. 1M : High Server
+
+Pay-as-you-go 
+Pay-as-you-grow
+__
+
+On-Demand ec2 instance : Whenever we have unpredictable worklods, SHortterm usages or you want to test your application for the first time with diff config.
+
+Pricing : /Sec (Min of 60 Sec)
+
+--
+Reserved ec2 instances (RI) : Whenever we have stable workloads, Predictable workloads for longer durations.. 1 Yr / 3 Yrs
+
+Standard RI : We cannot change the configuration during the period. (+)
+Convertable RI : We can change the configuration during the period.  (++)
+Scheduled RI : need instance on presistant intervals (Mon-Fri, Weekly 40 hrs)
+
+Pricing : Full Upfront : Pay full amount and get the instance. 
+Partial Upfront : Pay 30-50% now.. Pay remaining amount in monthly basis with redused Hourly price.
+NO upfront : Pay monthly basis on our usage. 
+
+
+--> We can sell instances in AWS Marketplace.
+--
+
+Spot Instance : We need to bid our pricing against aws pricing. If our price is more than aws, or equal to aws spot price, we will get the instance. If we have flexible Start and stop durations for our application.
+
+If price increased by aws, we will loss our ec2 instance.
+
+If price is increased by aws, your instance is terminated, You'll get charged for completed hours, not for the partial hours.
+
+If price is not increased by aws, you terminated instance, You'll get charged for full used hours.
+
+2 Hr 55 Minutes....  AWS Terminated : 2 Hr
+2 Hr 55 Minutes....  You Terminated : 2 Hr 59 Min
+
+t2.large : 1$/Hr.. 0.50$/hr From - to.. Whenever pricing is increqased, Instance terminates. 
+Pricing history : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
