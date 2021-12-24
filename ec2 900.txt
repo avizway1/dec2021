@@ -355,13 +355,6 @@ Task : Launch a windows ec2 instance, make it as "Web Server", Test the "Securit
 Task 2 : Perform some more customisations on the task 1 instance and make it as GoldemAMI , Launch instance from GAMI and Test we got all the customisations or not..!!!!!!
 
 
-
-https://www.udemy.com/course/jenkinswithavinash/?couponCode=DEC20211
-
-https://www.udemy.com/course/linuxwithavinash/?couponCode=DEC20211
-
-https://www.youtube.com/watch?v=rtI26X6FJX0&list=PLneBjIzDLECkdgoinrTO7D519zgPEmcte
-
 ___________________________________________________________________________________
 
 D: 23/12/2021
@@ -496,12 +489,13 @@ Task 3 : Launch a Linux 2 ec2 instance and make it as webserver using "Nginx".
 Task 4 : https://linuxsurvival.com/  (Complete all modules (first 2 atleast))
 
 
-______________________________________________________________________________________
+______________
 
-D: 
 
 Windows : FAT, FAT32, NTFS, ReFS
 Linux : ext3, ext4, xfs
+
+df	: disk filesystem
 
 grab the name of new volume : /dev/xvdb
 
@@ -565,7 +559,9 @@ Task 4 : https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-users.html
 
 
 
+https://www.udemy.com/course/jenkinswithavinash/?couponCode=DEC20211
 
+https://www.udemy.com/course/linuxwithavinash/?couponCode=DEC20211
 
-
+https://www.youtube.com/watch?v=rtI26X6FJX0&list=PLneBjIzDLECkdgoinrTO7D519zgPEmcte
 
