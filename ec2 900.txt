@@ -565,3 +565,37 @@ https://www.udemy.com/course/linuxwithavinash/?couponCode=DEC20211
 
 https://www.youtube.com/watch?v=rtI26X6FJX0&list=PLneBjIzDLECkdgoinrTO7D519zgPEmcte
 
+______________________________________________________________________________________
+
+D: 27/12/2021
+
+EFS : Elastic File System : File Share : Shared Storage solution for Multiple ec2 instances. : 
+--> Network File System : NFS v4.1 : Port 2049
+--> Support only Linux OS 
+--> No Pre Provisioning required.
+--> Add entry in "/etc/fstab" file.  Get entry info from "/etc/mtab" file
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-00742683a760918b0.efs.ap-south-1.amazonaws.com:/ efs
+
+sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-00742683a760918b0.efs.ap-south-1.amazonaws.com:/ /var/www/html/
+
+
+fs-00742683a760918b0.efs.ap-south-1.amazonaws.com:/ /var/www/html nfs4 rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,hard,noresvport,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=172.31.3.184,local_lock=none,addr=172.31.5.81 0 0
+
+
+Task : Create EFS, and Mount it to multiple ec2 instances. Deliver Web Content to both the instances from EFS.
+
+___
+
+Windows : Service Name : FSx
+--> SMB Protocol
+
+
+
+
+
+
+
+
+
+
