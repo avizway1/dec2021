@@ -731,13 +731,6 @@ ________________________________________________________________________________
 
 D: 30/12/2021
 
-Load Balancers : 
-
-classic ELB : Out Dated : http. https, tcp, udp : All legacy protocols
-Application ELB : http and https
-Network ELB : tcp, udp, tls
-
-
 Free Tier : 750 Hrs/Month..  
 
 ec2 instance --> install application --> t2.micro --> Verify the metrics
@@ -750,7 +743,7 @@ Horizantal Scaling : Distribute application to multiple ec2 instances..
 Classic ELB : Layer 4/7 LB.. : Outdated.. : http, https, tcp, udp.. 
 Application ELB : Layer 7 ELB.. : http and https
 Network ELB : Layer 4 ELB.. : TCP, UDP, TLS 
-Gateway ELB : 3rd party security virtual applicances.. 
+Gateway ELB : GENEVE / 3rd party security virtual applicances.. 
 
 **Please select at least two Subnets in different Availability Zones to provide higher availability for your load balancer.
 
@@ -758,7 +751,7 @@ Gateway ELB : 3rd party security virtual applicances..
 yum install httpd -y
 service httpd start
 chkconfig httpd on
-echo "<h1>This is my WebServer 1</h1>" > /var/www/html/index.html
+echo "<h1>This is my WebServer</h1>" > /var/www/html/index.html
 
 
 For ELBs, We will get DNS Endpoint..
@@ -769,8 +762,9 @@ Task : Launch multiple webservers in Multiple AZs... COnfigure the Classic ELB.
 --> Make sure you configure Pipeline mechanism between your ec2 instances and ELB.!!
 
 
-____________________________
+____________________________________________________________________________________
 
+D: 31/12/2021
 
 Target Group : Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and conditions. When a rule condition is met, traffic is forwarded to the corresponding target group.
 
@@ -795,6 +789,8 @@ ELB Access Logs : Logging on ELB. Destinatio is s3.
 
 Task : Practice application ELB with multiple TGs. (80, 8080, 8888)
 Task : Practice Network ELB with multiple TGs. (80, 8080, 8888)
+
+__________________________________________________________________________
 
 
 
