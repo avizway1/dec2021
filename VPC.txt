@@ -1,0 +1,143 @@
+VPC : Virtual Private Cloud : 
+
+Public IP : Unique across the globe 
+Private IP : unique within the network 
+
+192.168.100.1
+
+IPv4 : 32 Bit : 2^32
+IPv6 : 128 bit : 2^128
+
+Class A : 0.0.0.0 - 126.255.255.255
+Class B : 128.0.0.0 - 191.255.255.255
+Class C : 192.0.0.0 - 223.255.255.255
+
+Class D : 224.0.0.0 - 239.255.255.255 : Broadcosting purpose
+Class E : 240.0.0.0 - 255.255.255.255 : R&D
+
+127 : loopback / Localhost
+
+
+Every Class has a Private IP address range. Using this Private IP ranges won;t cost us anything. 
+
+Class A : 10.0.0.0 - 10.255.255.255
+Class B : 172.16.0.0 - 172.31.255.255
+Class C : 192.168.0.0 - 192.168.255.255
+
+ifconfig  / ip addr : Linux OS
+ipconfig /all	    : Windows OS
+
+
+Network : Group of interconnected hosts, which communicated each other.
+Host : Device with in Network. 
+
+Based on How many Networks you required.?
+How many Hosts you need with in every Network.?
+
+Class A : N.H.H.H : 127 Networks, Each Network 16M Hosts.
+Class B : N.N.H.H : 16,000 Networks, Each Network 65,000 Hosts.
+Class C : N.N.N.H : 2M Networks, Each Network supports 256 Hots. 
+
+
+192.168.0.(0-255) : 192.168.0.1/2/3/4/5../255
+192.168.1.(0-255) : 192.168.1.1/2/3/4/5../255
+192.168.2.(0-255) : 192.168.2.1/2/3/4/5../255
+
+172.16.0.0	: 172.16.(0-255).(0-255)
+
+172.16.0.0
+172.16.255.255
+
+10.(0-255).(0-255).(0-255)
+___
+
+In regular networks, 2 IPs are reserved.. (Network ID/1st IP and Broadcost ID/Last IP)
+
+AWS Reservs 5 IPs for every subnet we create.. 
+--> 2 Regular network
+--> 2 for DNS Servers
+--> 1 Future use
+
+In AWS, It supports Min /28, Max /16 CIDR/subnets.
+
+When we calculating Usable IPs, We need to do -5.
+
+192.168.0.0/20
+TShirt Size : CIDR of Network.. Subnet.. How big is your network is..!! 
+
+/32	/31	/30	/29	/28	/27	/26 	/25	/24	/16	/0
+
+2^0	2^1	2^2	2^3	2^4	2^5	2^6	2^7	2^8	2^16	2^32
+
+1	2	4	8	16	32	64	128	256	65536	4M
+
+
+32-32=0	--> 2^0 = 1
+32-31=1 --> 2^1 = 2
+32-30=2 --> 2^2 = 4
+32-28=4 --> 2^4 = 16		- 5 = 11 Usable IPs
+32-24=8 --> 2^8 = 256		- 5 = 251 Usable IPs
+32-16=16 --> 2^16 = 65536	- 5 = 65531 Usable IPs
+
+/20
+32-20=12 --> 2^12 = 4096	- 5 = 4091 Usable IPs
+
+Visual Subnet Calc: https://www.davidc.net/sites/default/subnets/subnets.html
+
+________________________________________________________________________________________
+
+CIDR : Classless InterDomain Routing : 
+--> How big network we required. 
+--> How many instances/ resources, we gonna launch. (predict)
+
+
+Public Subnet : Internet facing subnet.. :
+Private Subnet : Non-Internet facing subnet.. : 
+
+How big VPC we required.?				Ans : /20 (4091 Usable IPs)
+How many subnets we required within the VPC..?		Ans : 2
+How many public SUbnets required within vpc..?		Ans : 1
+How many private SUbnets required within vpc.?		Ans : 1
+Are you going to create any subnets in future.?		Ans : Yes (Have some IPs for future use).
+
+
+Step 1 : Create a VPC.
+	VPC Name : CustomVPC		VPC CIDR : 192.168.0.0/20
+
+Step 2 : Create Subnets within CustomVPC. 
+
+Name : Public Subnet : ap-south-1a : 192.168.0.0/22
+Name : Private SUbnet : ap-south-1b : 192.168.4.0/22
+
+Step 3 : Create an Internet Gateway and associate with CustomVPC.
+--> One VPC can contains one IGW.
+
+Step 4 : Create RouteTables and Associate appropriate Subnets, add required routes.
+
+--> PublicRoute : Go to SUbnet Association and choose "Public SUbnet". Navigate to Routes and add a route via IGW. 	 (0.0.0.0/0 --> IGW)
+
+--> PrivateRoute : Go to SUbnet Association and choose "Private SUbnet".
+
+Step 5 (Optional) : Navigate to Subnets, Choose "Public SUbnet", Actions, "Modify auto assign public ip settings", Enable.
+
+
+JUMP Server / Bastian Host : Is a Dedicated EC2 instance, Runs in CustomVPC PUblicSUbnet and can be used to connect to all the "Private Subnet" ec2 instances.
+
+
+___________
+
+Task : Create a VPC with 2 Subnets. (1 Public SUbnets and 1 Private Subnets)
+1 Public SUbnets (ap-south-1a)
+1 Private SUbnets (ap-south-1b)
+___
+
+Task : Create a VPC with 4 Subnets. (2 Public SUbnets and 2 Private Subnets)
+2 Public SUbnets (ap-south-1a, ap-south-1b)
+2 Private SUbnets (ap-south-1a, ap-south-1b)
+
+
+Task 2 : draw.io website and design this diagram.
+https://app.diagrams.net/?splash=0&libs=aws4
+_______________________________________________________________________________________
+
+
