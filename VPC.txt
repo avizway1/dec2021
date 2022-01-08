@@ -86,6 +86,8 @@ Visual Subnet Calc: https://www.davidc.net/sites/default/subnets/subnets.html
 
 ________________________________________________________________________________________
 
+D: 08/01/2022
+
 CIDR : Classless InterDomain Routing : 
 --> How big network we required. 
 --> How many instances/ resources, we gonna launch. (predict)
@@ -94,20 +96,23 @@ CIDR : Classless InterDomain Routing :
 Public Subnet : Internet facing subnet.. :
 Private Subnet : Non-Internet facing subnet.. : 
 
-How big VPC we required.?				Ans : /20 (4091 Usable IPs)
-How many subnets we required within the VPC..?		Ans : 2
-How many public SUbnets required within vpc..?		Ans : 1
-How many private SUbnets required within vpc.?		Ans : 1
-Are you going to create any subnets in future.?		Ans : Yes (Have some IPs for future use).
+Max CIDR : /16
+Min CIDR : /28
+
+How big VPC we required.?				Ans : /23 (507 Usable IPs)
+How many subnets we required within the VPC..?		Ans : 2 (1a, 1b)
+How many public SUbnets required within vpc..?		Ans : 1 (1a) (126)
+How many private SUbnets required within vpc.?		Ans : 1 (1b) (126)
+Are you going to create any subnets in future.?		Ans : Yes (Have some IPs for future use). (254)
 
 
 Step 1 : Create a VPC.
-	VPC Name : CustomVPC		VPC CIDR : 192.168.0.0/20
+	VPC Name : CustomVPC		VPC CIDR : 192.168.0.0/16
 
 Step 2 : Create Subnets within CustomVPC. 
 
-Name : Public Subnet : ap-south-1a : 192.168.0.0/22
-Name : Private SUbnet : ap-south-1b : 192.168.4.0/22
+Name : Public Subnet : ap-south-1a : 192.168.0.0/18
+Name : Private SUbnet : ap-south-1b : 192.168.64.0/18
 
 Step 3 : Create an Internet Gateway and associate with CustomVPC.
 --> One VPC can contains one IGW.
