@@ -145,4 +145,73 @@ Task 2 : draw.io website and design this diagram.
 https://app.diagrams.net/?splash=0&libs=aws4
 _______________________________________________________________________________________
 
+D: 09/01/2022
+
+
+PublicRoute : We need to associate InternetGateway. 
+PrivateRoute without internet : Don't add NAT.
+PrivateRoute With Intenet : Create NAT Gateway and add NAT Gateway.
+
+VPC NAT Gateway (NO FREE TIER ELIGIBILITY): Is designed to provide Internet to private Subnet resources. NAT always runs in custom VPCs public subnet. We need to generate an EIP (Elastic IP). 
+
+--> Make sure you release the EIP manually after deleting the NAT Gateway.
+
+Private subnet ec2 instances want to access something from internet / endpoint hosted over the internet / patching purpose it needs internet. 
+
+--> Make sure your edit PrivateRoute, and add an entry with 0.0.0.0/0 via NAT gateway.
+
+____
+
+NAT Instance : Now a days we are not using it.  It is an ec2 instance runs in custom vpcs public subnet, provides internet to private subnet resources.  (TEST IT)
+
+--> We need to takes  care about the Security groups.
+--> Source/destination check must be disabled.
+
+--> Make sure your edit PrivateRoute, and add an entry with 0.0.0.0/0 via NAT Instance.
+______________________
+
+Enable Logging on VPC : 
+Flow Logs: We can enable flowlogs at 
+--> VPC Level
+--> Subnet Level
+--> Instance Level
+
+We can choose destination as 1. S3 bucket 2. Cloudwatch Logs groups.
+
+___
+
+NACL : Network Access Control List : We can allow/deny traffic at Subnet level/AZ level using this NACLs.
+--> We need to takes care about the inbound rules and outbound rules.
+--> one subnet can be member of one NACL at a time.
+
+--> Default NACLs : all subnets member of this. It allows all the traffic.
+--> New NACLs won't allow any traffic, Defaultly deny everything.  
+
+--> Ephemeral ports / Temporary ports need to opened in NACL. 
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-ephemeral-ports
+
+--> Lowest rule number will have highest permissions. 
+
+
+Task : Create a VPC with 4 Subnets. (2 Public SUbnets and 2 Private Subnets)
+2 Public SUbnets (ap-south-1a, ap-south-1b)
+2 Private SUbnets (ap-south-1a, ap-south-1b)
+
+
+Task 2 : draw.io website and design this diagram. Inclusing NAT and NACL.
+https://app.diagrams.net/?splash=0&libs=aws4
+
+Task 3 : Create NAT Instance, and provide internet to Private SUbnet ec2 instances.
+
+
+
+
+
+
+
+
+
+
+
+
 
