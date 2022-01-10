@@ -197,14 +197,43 @@ Task : Create a VPC with 4 Subnets. (2 Public SUbnets and 2 Private Subnets)
 2 Public SUbnets (ap-south-1a, ap-south-1b)
 2 Private SUbnets (ap-south-1a, ap-south-1b)
 
-
 Task 2 : draw.io website and design this diagram. Inclusing NAT and NACL.
 https://app.diagrams.net/?splash=0&libs=aws4
 
 Task 3 : Create NAT Instance, and provide internet to Private SUbnet ec2 instances.
+_____________________________________________________________________________________
+
+D: 10/01/2022
+
+VPC Peering : Allow us to enable communication between multiple VPCs. (Same region, DIff region, Diff AWS accout VPCs)
+
+--> Requester VPC and Accepter VPC should not have same CIDR range.
+--> VPC Peering is non transitive peering. 
+--> Update both the VPCs route tables with Another VPC CIDR blocks via Peering connection. 
+
+		Requester VPC (Mumbai)		Accepeter VPC (Singapore)
+VPC CIDR	192.168.0.0/16			172.31.0.0/16
+VPC ID		vpc-0053e29929fa7ee81		vpc-51dd1137
+Region		ap-south-1			ap-southeast-1
+ACC ID		501170964283			501170964283
 
 
+8 Subnets in environment : 2 Public, 2 application (private), 2 Lambda (private), 2 Database/data (private)
 
+______________________________________________________________________________________
+
+
+Endpoints : Private Links : It provides private connectivity to the resources. If we have any requirement, s3 rwquests/dynamodb req should not flow over the internet. 
+
+NAT Gateway Works with IPv4. 
+If our VPC is configured to use IPv6, Instead of NAT Gateway, We use "Egress Only Internet Gateways".
+
+
+Can we associate multiple CIDRs for our VPC.
+Yes.. 
+
+VPN Connectivity (openvpn): https://www.youtube.com/watch?v=JSTyjISscNg
+Transit Gateway : https://www.youtube.com/watch?v=xyLlMBHy2wc
 
 
 
