@@ -1,0 +1,65 @@
+D: 18/01/2022
+
+
+Cloudtrail : Logging service. Enabled by default. it stores only last 90 days logs. Create a trail to s3 to store all logs for unlimited days. 
+
+• Management events provide information about management operations that are
+performed on resources in your AWS account. These are also known as control plane
+operations.
+
+• Data events provide information about the resource operations performed on or in a
+resource. These are also known as data plane operations. Data events are often high-volume activities. Data events can log s3, Dynamodb and Lambda services.
+
+• Insight Events : CloudTrail Insights events capture unusual activity in your AWS account. If you have Insights events enabled, and CloudTrail detects unusual activities.
+
+--> Cloudwatch Agent : We can install cw agent at os level, we can get custom logs of OS. 
+
+DataDog, Splunk, site24x7
+
+__________________________________
+
+Config : (Config works with Cloudtrail) : Record and evaluate configurations of your AWS resources. "NO FREE TIER"
+--> No s3 bucket should have public access. (Non_Compliant resource)
+--> WHen SSL cert is about to expire.
+
+___________
+
+AWS Trusted Advisor : Based on our support plan aws provide suggestions to fix 
+--> Cost Optimization : under utilised resources
+--> Performance : Over utilized resources
+--> Security
+--> Fault Tolerance
+--> Service Limits
+
+_________________________________________________________________________________
+
+ACM : Amazon Certificate Manager : Generate SSL/TLS certificates. 
+
+
+Task : Deliver website using ELB.. Generate SSL cert and configure http to https redirection.
+https://raw.githubusercontent.com/avizway/redirection/master/httptohttps
+
+
+
+______________________________________________________________________________________
+
+AWS Inspector : Inspector agent will perform the selected assesments to find common issues, network rechability and CIS benchmarks. 
+
+____
+
+Protect our resources from DDoS attack : AWS Shield Advanced ($3000/Month)  + ASG + CloudFront
+____
+
+WAF : Web Application Firewall : Application ELB, CLoudfront, API Gateway.. : AWS WAF is a web application firewall service that lets you monitor web requests that are forwarded to an Amazon API Gateway API, an Amazon CloudFront distribution, or an Application Load Balancer. You can protect those resources based on conditions that you specify, such as the IP addresses that the requests originate from.
+
+____________
+
+Task : Launch an ec2 instance in Mumbai region.. Migrate this ec2 instance from mumbai region to N Virginia region using "CloudEndure Migration".
+
+https://console.cloudendure.com/#/register/register
+
+GCP to AWS : https://www.youtube.com/watch?v=8xf1RpPdcHs  (NV - Mum)
+VMWARE : https://www.youtube.com/watch?v=Vx9lRRY-shg
+
+
+
