@@ -1,6 +1,5 @@
 D: 18/01/2022
 
-
 Cloudtrail : Logging service. Enabled by default. it stores only last 90 days logs. Create a trail to s3 to store all logs for unlimited days. 
 
 • Management events provide information about management operations that are
@@ -13,6 +12,10 @@ resource. These are also known as data plane operations. Data events are often h
 • Insight Events : CloudTrail Insights events capture unusual activity in your AWS account. If you have Insights events enabled, and CloudTrail detects unusual activities.
 
 --> Cloudwatch Agent : We can install cw agent at os level, we can get custom logs of OS. 
+
+** Realtime : We enable trail for all accounts in one AWS Logging account. If any external auditor visits, we can provide access on only logging account.
+In Real env: We create a trail for Management, another trail for data and insights.
+
 
 DataDog, Splunk, site24x7
 
@@ -39,27 +42,72 @@ ACM : Amazon Certificate Manager : Generate SSL/TLS certificates.
 Task : Deliver website using ELB.. Generate SSL cert and configure http to https redirection.
 https://raw.githubusercontent.com/avizway/redirection/master/httptohttps
 
-
-
 ______________________________________________________________________________________
 
-AWS Inspector : Inspector agent will perform the selected assesments to find common issues, network rechability and CIS benchmarks. 
+D: 19/01/2022
+
+
+AWS Inspector : It used to analyse the instance health status including OS level.
+(NO FREE TIER ELIGIBILITY)..
+--> Inspector agent will perform the selected assesments to find common issues, network rechability and CIS benchmarks. 
+
+Sprint : 2 weeks : 
+
+Inspector agent need to install in our ec2 instance.. We can install manaually.. We can use Systems Manager. 
+
+--> Common Vulnerabilities and Exposures-1.1
+--> CIS Operating System Security Configuration Benchmarks-1.0
+--> Network Reachability-1.1
+--> Security Best Practices-1.0
 
 ____
 
-Protect our resources from DDoS attack : AWS Shield Advanced ($3000/Month)  + ASG + CloudFront
-____
+AWS Cloudfront : AWS CDN Service (Content Delivery Network) : Akamai, cloudflair..
+--> CLoudfront have a feature to protect our resources from DDoS attack.
+
+To get the latest data from the Origin / To clear the cache from Edge location, We can perform "Invalidation".
+
+Cache and origin request settings : Use legacy cache settings
+
+Default TTL : 86,400 Sec (1 Day)'
+Max : 365 Days
+
+We must create SSL Cert in N Virginia to map with cloudfront distribution. 
+
+--> Based on endcustomer geo location, we can whitelist/blocklist the data.
+____________
+
+Task : Create an ELB, Try to deliver with Cloudfront distribution.
+____________________________________________________________________________________
+
+D: 20/01/2022
+
 
 WAF : Web Application Firewall : Application ELB, CLoudfront, API Gateway.. : AWS WAF is a web application firewall service that lets you monitor web requests that are forwarded to an Amazon API Gateway API, an Amazon CloudFront distribution, or an Application Load Balancer. You can protect those resources based on conditions that you specify, such as the IP addresses that the requests originate from.
 
-____________
+-->  We can create rules in WAF and apply on top of Application Load balancer / Cloudfront / Api gateway.
+____
+
+Protect our resources from DDoS attack : AWS Shield Advanced ($3000/Month)  + ASG + CloudFront
+
+
+AWS Shiled / AWS Shieled advanced : Designed to protect our resources from DDoS Attack. 
+
+Shield Enabled for all the aws account. 
+Shield advanced cost us 3000$/Month.. AWS Team monitor the DDoS attack/traffic.
+
+___
+
+SMS : Server Migration Service : 
+--> CloudEndure
+
+https://console.cloudendure.com/
+
+What Server we want to migrate to aws, Install CLoudendure Agent --> Cloudendure screen create a task and test the connection --> Launch migration instance in AWS environment --> Run the migration task.. We will get an AMI --> Launch instance from AMI. 
+
+Database migration : https://www.youtube.com/watch?v=iRhJDGp-ew8
+SMS with VMWARE : https://www.youtube.com/watch?v=Vx9lRRY-shg
+Cloudendure migration : https://www.youtube.com/watch?v=8xf1RpPdcHs
+azure to aws migration : https://www.youtube.com/watch?v=bdaHMRqCBkg
 
 Task : Launch an ec2 instance in Mumbai region.. Migrate this ec2 instance from mumbai region to N Virginia region using "CloudEndure Migration".
-
-https://console.cloudendure.com/#/register/register
-
-GCP to AWS : https://www.youtube.com/watch?v=8xf1RpPdcHs  (NV - Mum)
-VMWARE : https://www.youtube.com/watch?v=Vx9lRRY-shg
-
-
-

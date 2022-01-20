@@ -1,0 +1,127 @@
+
+Application Services : 
+
+SNS : SImple Notifications Service : 
+--> We can create a Topic, We can add subscribers (email, website endpoint, sqs, mobile). 
+--> Subscriber need to confirm the subscription. 
+--> Push based messaging service. 
+
+SNS also supports Push notifications service. Works based on mobile operating systems. 
+
+__
+
+SQS : Simple Queue service : pull based messeging service. 
+Ex: AutoScaling group works with sqs service. 
+
+--> Standard 
+At-least-once delivery, message ordering isn't preserved
+At-least once delivery
+Best-effort ordering
+
+--> FIFO (Name should end with .fifo) 
+First-in-first-out delivery, message ordering is preserved
+First-in-first-out delivery
+Exactly-once processin
+
+Maximum message size : 256 kb  (AWS cost us based on chunks)
+1 chunk = 64 kb..   
+
+1 million req under free tier eligibility.
+
+__________
+
+SES : Simple Email Service : If we want to send messeges on behalf of another email / domain name, We can use SES service. 
+
+--> For bulk email sending, we need to use another service "Amazon pinpoint".
+https://www.youtube.com/watch?v=g_NTrw3UU0w
+_________
+
+
+
+Codecommit
+CodeDeploy
+Codepipeline
+codebuild
+
+"S3/codecommit/git" --> Deploy to "ElasticBeanstalk"
+
+IDE within AWS : Cloud9
+
+_________________________________________________________
+
+AWS Lambda : Serverless architecture. 
+--> Lambda performance depends on memory configurations. 
+
+--> Python
+--> .net core
+--> java
+--> go
+--> ruby
+--> Node.js
+
+Lambda-canary : It open the required website and look for the string we have given.
+
+google.com --> Google
+
+--> Incresing the memory and timeout values.
+--> Changing the required [permissions on lambda associated roles. 
+--> Can we run lambda within a VPC..?? YES
+	--> FOr Lambda role Make sure you associate "AWSLambdaVPCAccessExecutionRole"
+
+
+task : Am sharing some lambda functions... Deploy the lambda functions and test it. 
+
+________________________________________________________________________________________
+
+D: 
+
+Cloud9 : IDE with in AWS environment. 
+
+AWS CDK : Cloud Development kit : Typescript, Python, .net, Java
+
+Step 1 : install node.js 	npm --version
+Step 2 : Install AWS CDK	npm install -g aws-cdk
+	  To Verify CDK verion	cdk --version
+
+cdk init		--> Initialise the project
+
+mkdir test-project
+cd test-project
+cdk init sample-app --language typescript
+cdk synth		--> Synthasise, Create a cloudformation script
+cdk bootstrap		--> Only onetime
+cdk diff		--> What modifications happens
+lib/test-project-stack.ts	--> Our code is here
+
+https://cdkworkshop.com/
+
+
+AWS Cloudformation : IaC Infrastructure as Code : JSON/YAML : 
+--> it's free.
+
+Prepare a cloudformation stack. This stack are reusable.
+--> CLoudformation created resources will delete automatically when we delete the cloudformation stack.
+
+
+2 ec2 instance, 3 s3 bucket, 1 rds onstance
+
+AWS Console Recorder : 
+
+
+
+ECR : Elastic Containers Repository : Place to store container images.
+ECS : Elastic Container Service : 
+
+Fargate : Fully managed by AWS. No backend instance, AWS manages everything.
+EC2 : we will get an instance, COnstainers runs within instance, We can login and perform os level operations.
+
+
+Task Defination : Task definitions specify the container information for your application, such as how many containers are part of your task, what resources they will use, how they are linked together, and which host ports they will use.
+
+awsvpc — The task is allocated its own elastic network interface (ENI) and a primary private IPv4 address. This gives the task the same networking properties as Amazon EC2 instances.
+bridge — The task utilizes Docker's built-in virtual network which runs inside each Amazon EC2 instance hosting the task.
+host — The task bypasses Docker's built-in virtual network and maps container ports directly to the ENI of the Amazon EC2 instance hosting the task. As a result, you can't run multiple instantiations of the same task on a single Amazon EC2 instance when port mappings are used.
+none — The task has no external network connectivity.
+
+https://ecsworkshop.com/
+
