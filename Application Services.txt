@@ -71,9 +71,22 @@ google.com --> Google
 
 task : Am sharing some lambda functions... Deploy the lambda functions and test it. 
 
-________________________________________________________________________________________
+______________________
 
-D: 
+AWS Cloudformation : IaC Infrastructure as Code : JSON/YAML : 
+--> it's free.
+
+Prepare a cloudformation stack. This stack are reusable.
+--> CLoudformation created resources will delete automatically when we delete the cloudformation stack.
+
+rollback on failure : yes
+
+2 ec2 instance, 3 s3 bucket, 1 rds instance
+
+AWS Console Recorder : 
+
+__________________________
+
 
 Cloud9 : IDE with in AWS environment. 
 
@@ -96,16 +109,7 @@ lib/test-project-stack.ts	--> Our code is here
 https://cdkworkshop.com/
 
 
-AWS Cloudformation : IaC Infrastructure as Code : JSON/YAML : 
---> it's free.
 
-Prepare a cloudformation stack. This stack are reusable.
---> CLoudformation created resources will delete automatically when we delete the cloudformation stack.
-
-
-2 ec2 instance, 3 s3 bucket, 1 rds onstance
-
-AWS Console Recorder : 
 
 
 
