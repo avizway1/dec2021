@@ -34,18 +34,6 @@ SES : Simple Email Service : If we want to send messeges on behalf of another em
 
 --> For bulk email sending, we need to use another service "Amazon pinpoint".
 https://www.youtube.com/watch?v=g_NTrw3UU0w
-_________
-
-
-
-Codecommit
-CodeDeploy
-Codepipeline
-codebuild
-
-"S3/codecommit/git" --> Deploy to "ElasticBeanstalk"
-
-IDE within AWS : Cloud9
 
 _________________________________________________________
 
@@ -85,8 +73,9 @@ rollback on failure : yes
 
 AWS Console Recorder : 
 
-__________________________
+_____________________________________________________________________________________
 
+D: 22/01/2022
 
 Cloud9 : IDE with in AWS environment. 
 
@@ -97,6 +86,15 @@ Step 2 : Install AWS CDK	npm install -g aws-cdk
 	  To Verify CDK verion	cdk --version
 
 cdk init		--> Initialise the project
+
+
+ * `npm run build`   compile typescript to js
+ * `npm run watch`   watch for changes and compile
+ * `npm run test`    perform the jest unit tests
+ * `cdk deploy`      deploy this stack to your default AWS account/region
+ * `cdk diff`        compare deployed stack with current state
+ * `cdk synth`       emits the synthesized CloudFormation template
+
 
 mkdir test-project
 cd test-project
@@ -109,9 +107,30 @@ lib/test-project-stack.ts	--> Our code is here
 https://cdkworkshop.com/
 
 
+__________________________
+
+https://www.youtube.com/watch?v=rtI26X6FJX0&list=PLneBjIzDLECkdgoinrTO7D519zgPEmcte
+
+Codecommit
+CodeDeploy
+Codepipeline
+codebuild
+
+"S3/codecommit/git" --> Deploy to "ElasticBeanstalk"
+
+________________
+
+git add .
+git status
+git commit -m "commit msg"
+git push
+git pull
 
 
+Task : With shared code, perform CICD deployment.
 
+
+________________
 
 ECR : Elastic Containers Repository : Place to store container images.
 ECS : Elastic Container Service : 
